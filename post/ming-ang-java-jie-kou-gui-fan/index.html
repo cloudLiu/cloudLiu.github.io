@@ -1,0 +1,220 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>鸣昂Java接口规范 | Gridea</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="/Users/liutao/Documents/Gridea/output/favicon.ico?v=1565523167861">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="/Users/liutao/Documents/Gridea/output/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="/Users/liutao/Documents/Gridea/output">
+  <img class="avatar" src="/Users/liutao/Documents/Gridea/output/images/avatar.png?v=1565523167861" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/Users/liutao/Documents/Gridea/output//index.html" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/Users/liutao/Documents/Gridea/output/archives/index.html" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/Users/liutao/Documents/Gridea/output/tags/index.html" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/Users/liutao/Documents/Gridea/output/post/about/index.html" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              鸣昂Java接口规范
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-08-11
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="/Users/liutao/Documents/Gridea/output/tag/UIma7FWht/index.html" class="post-tag">
+                  # java
+                </a>
+              
+                <a href="/Users/liutao/Documents/Gridea/output/tag/K7y2j1tEoz/index.html" class="post-tag">
+                  # 规范
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="java开发规范">java开发规范</h1>
+<blockquote>
+<p>对接口安全和代码编写进行一定指导，算是一份自我检查测试的要求。</p>
+</blockquote>
+<h2 id="基本要求">基本要求</h2>
+<h4 id="1提交数据校验类型-长度大小">1.提交数据校验：类型、长度大小</h4>
+<h4 id="2接口锁机制特别是更新操作保证业务在任何情况都是正确的">2.接口锁机制，特别是更新操作，保证业务在任何情况都是正确的</h4>
+<pre><code>并发修改同一记录时，避免更新丢失，需要加锁。要么在应用层加锁，要么在缓存加 锁，要么在数据库层使用乐观锁，使用 version 作为更新依据。 
+说明：如果每次访问冲突概率小于 20%，推荐使用乐观锁，否则使用悲观锁。乐观锁的重试次 数不得小于 3 次。
+</code></pre>
+<h4 id="3基本限流">3.基本限流</h4>
+<h4 id="4复杂业务-拆分-保证接口响应速度在50毫秒">4.复杂业务-拆分。保证接口响应速度在50毫秒</h4>
+<h4 id="5重试机制">5.重试机制</h4>
+<pre><code>拆分业务需要保证任务完成一致性要么全部完成要么全部失败，或者加入人工操作，最终一致性。
+</code></pre>
+<h4 id="6权限框架redission-shiro">6.权限框架：redission shiro</h4>
+<h4 id="7日志框架日志要便于分析和上面的重试配合">7.日志框架，日志要便于分析，和上面的重试配合</h4>
+<h4 id="8接口文档使用vue结构的文档样式">8.接口文档，使用Vue结构的文档样式</h4>
+<h4 id="9dodtobovo">9.DO/DTO/BO/VO</h4>
+<h4 id="10如果是-jdk8-的应用可以使用-instant-代替-datelocaldatetime-代替-calendar">10.如果是 JDK8 的应用，可以使用 Instant 代替 Date，LocalDateTime 代替 Calendar</h4>
+<pre><code>DateTimeFormatter 代替 SimpleDateFormat，官方给出的解释：simple beautiful strong immutable thread-safe。
+</code></pre>
+<h4 id="11事务问题学习掌握事务相关知识">11.事务问题，学习掌握事务相关知识</h4>
+<pre><code>* 隔离性
+* 传播性
+* spring事务的配置方法
+* 数据库锁在事务中的体现
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#java%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">java开发规范</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82">基本要求</a><br>
+*
+<ul>
+<li><a href="#1%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%B1%BB%E5%9E%8B-%E9%95%BF%E5%BA%A6%E5%A4%A7%E5%B0%8F">1.提交数据校验：类型、长度大小</a></li>
+<li><a href="#2%E6%8E%A5%E5%8F%A3%E9%94%81%E6%9C%BA%E5%88%B6%E7%89%B9%E5%88%AB%E6%98%AF%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E4%BF%9D%E8%AF%81%E4%B8%9A%E5%8A%A1%E5%9C%A8%E4%BB%BB%E4%BD%95%E6%83%85%E5%86%B5%E9%83%BD%E6%98%AF%E6%AD%A3%E7%A1%AE%E7%9A%84">2.接口锁机制，特别是更新操作，保证业务在任何情况都是正确的</a></li>
+<li><a href="#3%E5%9F%BA%E6%9C%AC%E9%99%90%E6%B5%81">3.基本限流</a></li>
+<li><a href="#4%E5%A4%8D%E6%9D%82%E4%B8%9A%E5%8A%A1-%E6%8B%86%E5%88%86-%E4%BF%9D%E8%AF%81%E6%8E%A5%E5%8F%A3%E5%93%8D%E5%BA%94%E9%80%9F%E5%BA%A6%E5%9C%A850%E6%AF%AB%E7%A7%92">4.复杂业务-拆分。保证接口响应速度在50毫秒</a></li>
+<li><a href="#5%E9%87%8D%E8%AF%95%E6%9C%BA%E5%88%B6">5.重试机制</a></li>
+<li><a href="#6%E6%9D%83%E9%99%90%E6%A1%86%E6%9E%B6redission-shiro">6.权限框架：redission shiro</a></li>
+<li><a href="#7%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E6%97%A5%E5%BF%97%E8%A6%81%E4%BE%BF%E4%BA%8E%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%8A%E9%9D%A2%E7%9A%84%E9%87%8D%E8%AF%95%E9%85%8D%E5%90%88">7.日志框架，日志要便于分析，和上面的重试配合</a></li>
+<li><a href="#8%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E4%BD%BF%E7%94%A8vue%E7%BB%93%E6%9E%84%E7%9A%84%E6%96%87%E6%A1%A3%E6%A0%B7%E5%BC%8F">8.接口文档，使用Vue结构的文档样式</a></li>
+<li><a href="#9dodtobovo">9.DO/DTO/BO/VO</a></li>
+<li><a href="#10%E5%A6%82%E6%9E%9C%E6%98%AF-jdk8-%E7%9A%84%E5%BA%94%E7%94%A8%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8-instant-%E4%BB%A3%E6%9B%BF-datelocaldatetime-%E4%BB%A3%E6%9B%BF-calendar">10.如果是 JDK8 的应用，可以使用 Instant 代替 Date，LocalDateTime 代替 Calendar</a></li>
+<li><a href="#11%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0%E6%8E%8C%E6%8F%A1%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86">11.事务问题，学习掌握事务相关知识</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/Users/liutao/Documents/Gridea/output/post/hello-gridea/index.html">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="/Users/liutao/Documents/Gridea/output/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      console.log('section.offsetHeight', section.offsetHeight);
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
