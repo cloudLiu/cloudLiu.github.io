@@ -1,19 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>/Users/liutao/Documents/Gridea/output</id>
-    <title>Gridea</title>
-    <updated>2019-08-11T11:32:50.611Z</updated>
+    <id>https://cloudliu.github.io</id>
+    <title>鸣昂网络</title>
+    <updated>2019-08-12T01:29:52.320Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="/Users/liutao/Documents/Gridea/output"/>
-    <link rel="self" href="/Users/liutao/Documents/Gridea/output/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
-    <logo>/Users/liutao/Documents/Gridea/output/images/avatar.png</logo>
-    <icon>/Users/liutao/Documents/Gridea/output/favicon.ico</icon>
-    <rights>All rights reserved 2019, Gridea</rights>
+    <link rel="alternate" href="https://cloudliu.github.io"/>
+    <link rel="self" href="https://cloudliu.github.io/atom.xml"/>
+    <subtitle>公司内部项目经验汇总、学习资料共享！</subtitle>
+    <logo>https://cloudliu.github.io/images/avatar.png</logo>
+    <icon>https://cloudliu.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2019, 鸣昂网络</rights>
+    <entry>
+        <title type="html"><![CDATA[一些实用代码]]></title>
+        <id>https://cloudliu.github.io/post/yi-xie-shi-yong-dai-ma</id>
+        <link href="https://cloudliu.github.io/post/yi-xie-shi-yong-dai-ma">
+        </link>
+        <updated>2019-08-12T00:34:58.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="element的一个校验正则">element的一个校验正则</h2>
+<ul>
+<li>oninput =&quot;value=value.replace(/[^\d]/g,'')&quot;    //只能输入数字</li>
+<li>oninput =&quot;value=value.replace(/[^0-9.]/g,'')&quot;  //只能输入数字和小数</li>
+</ul>
+<h2 id="如何不停止服务清空nohupout文件">如何不停止服务清空nohup.out文件</h2>
+<pre><code>cp /dev/null nohup.out
+cat /dev/null &gt; nohup.out
+</code></pre>
+<h2 id="spring事务">spring事务</h2>
+<ul>
+<li>TransactionAspectSupport.currentTransactionStatus().setRollbackOnly(); //spring手动设置回滚，必须抛出运行时异常spring才能监听到回滚，所以遇到try catch了的或者不是运行时异常就手动回滚下。</li>
+</ul>
+<h2 id="pfx证书转jks证书">pfx证书转jks证书</h2>
+<pre><code>在命令行执行下面命令：
+keytool -importkeystore -srckeystore  2618542_friend.biuwork.com.pfx -srcstoretype pkcs12 -destkeystore mycert.jks -deststoretype JKS
+根据提示输入密码
+</code></pre>
+<h2 id="mysql查看设置隔离级别-阿里云默认是read-committed">MySQL查看设置隔离级别 - 阿里云默认是READ-COMMITTED</h2>
+<pre><code>mysql默认的事务处理级别是'REPEATABLE-READ',也就是可重复读
+1.查看当前会话隔离级别
+select @@tx_isolation;
+2.查看系统当前隔离级别
+select @@global.tx_isolation;
+3.设置当前会话隔离级别
+set session transaction isolatin level repeatable read;
+4.设置系统当前隔离级别
+set global transaction isolation level repeatable read;
+--------------------- 
+版权声明：本文为CSDN博主「程序媛-kaka」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/dyhdengyahui/article/details/80110545
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[鸣昂Java接口规范]]></title>
-        <id>/Users/liutao/Documents/Gridea/output/post/ming-ang-java-jie-kou-gui-fan/index.html</id>
-        <link href="/Users/liutao/Documents/Gridea/output/post/ming-ang-java-jie-kou-gui-fan/index.html">
+        <id>https://cloudliu.github.io/post/ming-ang-java-jie-kou-gui-fan</id>
+        <link href="https://cloudliu.github.io/post/ming-ang-java-jie-kou-gui-fan">
         </link>
         <updated>2019-08-11T11:30:19.000Z</updated>
         <content type="html"><![CDATA[<h1 id="java开发规范">java开发规范</h1>
@@ -48,8 +88,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>/Users/liutao/Documents/Gridea/output/post/hello-gridea/index.html</id>
-        <link href="/Users/liutao/Documents/Gridea/output/post/hello-gridea/index.html">
+        <id>https://cloudliu.github.io/post/hello-gridea</id>
+        <link href="https://cloudliu.github.io/post/hello-gridea">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
